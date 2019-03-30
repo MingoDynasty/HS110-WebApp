@@ -7,5 +7,5 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 public class TestFile {
-  test2
+  test3
 }
