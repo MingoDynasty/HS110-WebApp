@@ -40,7 +40,7 @@ public class SmartPlugService {
             })
         .orElseGet(
             () -> {
-              // TODO: do we want to automatically insert a new? Or just return error?
+              // TODO: do we actually want to automatically insert a new? Or just return error?
               logger.info("Failed to find smart plug with ID '{}'. Inserting a new...", id);
               sp.setId(id);
               return this.smartPlugRepository.save(sp);
@@ -48,6 +48,11 @@ public class SmartPlugService {
   }
 
   public void deleteSmartPlug(long id) {
-    // TODO
+    if (!this.findOne(id).isPresent()) {
+      logger.info("No smart plug found with ID '{}'. Nothing to delete...", id);
+      return;
+    }
+
+    this.smartPlugRepository.deleteById(id);
   }
 }

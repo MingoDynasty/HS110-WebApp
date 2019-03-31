@@ -42,14 +42,13 @@ public class SmartPlugController {
     return smartPlugService.insertSmartPlug(sp);
   }
 
-  // update
-  @PutMapping(value = "/putsmartplugs/{id}")
+  @PutMapping(value = "/smartplugs/{id}")
   public SmartPlug updateSmartPlug(@PathVariable("id") long id, @RequestBody SmartPlug sp) {
     logger.info("Updating smart plug with ID: {}", id);
     return smartPlugService.updateSmartPlug(id, sp);
   }
 
-  @DeleteMapping(value = "/deletesmartplugs/{id}")
+  @DeleteMapping(value = "/smartplugs/{id}")
   public void deleteSmartPlug(@PathVariable("id") long id) {
     logger.info("Deleting smart plug with ID: {}", id);
     smartPlugService.deleteSmartPlug(id);
