@@ -20,12 +20,14 @@ import com.company.webapp.model.SmartPlug;
 public class SmartPlugController {
   private static final Logger logger = LoggerFactory.getLogger(SmartPlugController.class);
 
-  @Autowired SmartPlugService smartPlugService;
+  @Autowired private SmartPlugService smartPlugService;
 
   @GetMapping(value = "/smartplugs")
   public List<SmartPlug> getSmartPlugs() {
-    logger.info("Getting all smart plugs.");
-    return smartPlugService.findAll();
+    logger.info("Getting all smart plugs...");
+    List<SmartPlug> list = smartPlugService.findAll();
+    logger.info("Found {} smart plugs.", list.size());
+    return list;
   }
 
   @GetMapping(value = "/smartplugs/{id}")
@@ -42,14 +44,14 @@ public class SmartPlugController {
 
   // update
   @PutMapping(value = "/putsmartplugs/{id}")
-  public void updateSmartPlug(@PathVariable("id") long id, @RequestBody SmartPlug sp) {
+  public SmartPlug updateSmartPlug(@PathVariable("id") long id, @RequestBody SmartPlug sp) {
     logger.info("Updating smart plug with ID: {}", id);
-    smartPlugService.updateSmartPlug(sp);
+    return smartPlugService.updateSmartPlug(id, sp);
   }
 
   @DeleteMapping(value = "/deletesmartplugs/{id}")
-  public void deleteSmartPlug(@PathVariable("id") long id, @RequestBody SmartPlug sp) {
+  public void deleteSmartPlug(@PathVariable("id") long id) {
     logger.info("Deleting smart plug with ID: {}", id);
-    smartPlugService.deleteSmartPlug(sp);
+    smartPlugService.deleteSmartPlug(id);
   }
 }

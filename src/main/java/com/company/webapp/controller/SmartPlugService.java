@@ -15,7 +15,7 @@ import com.company.webapp.repository.SmartPlugRepository;
 public class SmartPlugService {
   private static final Logger logger = LoggerFactory.getLogger(SmartPlugService.class);
 
-  @Autowired SmartPlugRepository smartPlugRepository;
+  @Autowired private SmartPlugRepository smartPlugRepository;
 
   public List<SmartPlug> findAll() {
     return this.smartPlugRepository.findAll();
@@ -29,11 +29,25 @@ public class SmartPlugService {
     return this.smartPlugRepository.save(sp);
   }
 
-  public void updateSmartPlug(SmartPlug sp) {
-    // TODO
+  public SmartPlug updateSmartPlug(long id, SmartPlug sp) {
+    return this.findOne(id)
+        .map(
+            smartPlug -> {
+              logger.info("Smart plug with ID '{}' found. Updating...", id);
+              smartPlug.setName(sp.getName());
+              smartPlug.setIpAddress(sp.getIpAddress());
+              return this.smartPlugRepository.save(smartPlug);
+            })
+        .orElseGet(
+            () -> {
+              // TODO: do we want to automatically insert a new? Or just return error?
+              logger.info("Failed to find smart plug with ID '{}'. Inserting a new...", id);
+              sp.setId(id);
+              return this.smartPlugRepository.save(sp);
+            });
   }
 
-  public void deleteSmartPlug(SmartPlug sp) {
+  public void deleteSmartPlug(long id) {
     // TODO
   }
 }
