@@ -1,7 +1,6 @@
 package com.company.webapp.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.company.webapp.exception.SmartPlugNotFoundException;
 import com.company.webapp.model.SmartPlug;
 
 @RestController
@@ -31,9 +31,9 @@ public class SmartPlugController {
   }
 
   @GetMapping(value = "/smartplugs/{id}")
-  public Optional<SmartPlug> getSmartPlug(@PathVariable("id") long id) {
+  public SmartPlug getSmartPlug(@PathVariable("id") long id) {
     logger.info("Getting smart plug with ID: {}", id);
-    return smartPlugService.findOne(id);
+    return smartPlugService.findOne(id).orElseThrow(() -> new SmartPlugNotFoundException(id));
   }
 
   @PostMapping(value = "/smartplugs")
