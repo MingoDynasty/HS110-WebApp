@@ -14,7 +14,7 @@ public class SmartPlug {
   private Long id;
 
   private String name;
-  private int ipAddress;
+  private String ipAddress;
 
   public Long getId() {
     return id;
@@ -32,11 +32,11 @@ public class SmartPlug {
     this.name = name;
   }
 
-  public int getIpAddress() {
+  public String getIpAddress() {
     return ipAddress;
   }
 
-  public void setIpAddress(int ipAddress) {
+  public void setIpAddress(String ipAddress) {
     this.ipAddress = ipAddress;
   }
 }
