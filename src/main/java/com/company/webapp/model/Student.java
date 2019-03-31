@@ -1,4 +1,4 @@
-package com.company.webapp.entity;
+package com.company.webapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

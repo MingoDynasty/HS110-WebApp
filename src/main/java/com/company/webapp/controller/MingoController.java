@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.company.webapp.entity.Student;
+import com.company.webapp.model.Student;
 import com.company.webapp.repository.StudentRepository;
 
 @RestController
