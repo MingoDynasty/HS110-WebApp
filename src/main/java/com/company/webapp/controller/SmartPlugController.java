@@ -16,12 +16,18 @@ import com.company.webapp.model.SmartPlug;
 
 @RestController
 public class SmartPlugController {
-  private static final Logger _LOGGER = LoggerFactory.getLogger(SmartPlugController.class);
+  private static final Logger logger = LoggerFactory.getLogger(SmartPlugController.class);
 
   @Autowired SmartPlugService smartPlugService;
 
-  @GetMapping(value = "/smartplug")
+  @GetMapping(value = "/smartplugs")
   public List<SmartPlug> getSmartPlugs() {
+
+    return smartPlugService.findAll();
+  }
+
+  @GetMapping(value = "/smartplugs/{}")
+  public List<SmartPlug> getSmartPlug() {
     return smartPlugService.findAll();
   }
 

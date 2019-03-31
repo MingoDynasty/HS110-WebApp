@@ -12,7 +12,7 @@ import com.company.webapp.repository.SmartPlugRepository;
 
 @Service
 public class SmartPlugService {
-  private static final Logger _LOGGER = LoggerFactory.getLogger(SmartPlugService.class);
+  private static final Logger logger = LoggerFactory.getLogger(SmartPlugService.class);
 
   @Autowired SmartPlugRepository smartPlugRepository;
 

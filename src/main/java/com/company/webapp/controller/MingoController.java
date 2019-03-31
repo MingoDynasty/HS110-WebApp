@@ -16,7 +16,7 @@ import com.company.webapp.repository.StudentRepository;
 
 @RestController
 public class MingoController {
-  private static final Logger _LOGGER = LoggerFactory.getLogger(MingoController.class);
+  private static final Logger logger = LoggerFactory.getLogger(MingoController.class);
 
   @Autowired private StudentRepository studentRepository;
 
@@ -24,30 +24,30 @@ public class MingoController {
 
   @PostMapping("mypost")
   public void test(@RequestParam("sha") String sha, @RequestParam("msg") String msg) {
-    _LOGGER.info("Hit mypost");
-    _LOGGER.info("sha : {}", sha);
-    _LOGGER.info("msg : {}", msg);
+    logger.info("Hit mypost");
+    logger.info("sha : {}", sha);
+    logger.info("msg : {}", msg);
   }
 
   @GetMapping("/mingo")
   public String index() {
-    _LOGGER.info("Reached: /mingo");
+    logger.info("Reached: /mingo");
     List<Student> students = this.studentRepository.findAll();
     for (Student student : students) {
-      _LOGGER.info("Name: {}", student.getName());
+      logger.info("Name: {}", student.getName());
     }
 
     String response = String.format("You have hit this endpoint %d times!", ++counter);
-    _LOGGER.info("/mingo responded with: {}", response);
+    logger.info("/mingo responded with: {}", response);
     return response;
   }
 
   @GetMapping("/myget")
   public ResponseEntity<String> get() {
-    _LOGGER.info("Reached: /myget");
+    logger.info("Reached: /myget");
     ResponseEntity<String> response =
         ResponseEntity.ok().header("Custom-Header", "foo").body("Custom header set");
-    _LOGGER.info("/myget responded with: {}", response);
+    logger.info("/myget responded with: {}", response);
     return response;
   }
 }
