@@ -1,4 +1,4 @@
-package com.wong.spring.controller;
+package com.company.webapp.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.wong.spring;
+package com.company.webapp;
 
 import java.util.Arrays;
 

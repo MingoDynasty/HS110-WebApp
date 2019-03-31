@@ -1,4 +1,4 @@
-package com.wong.spring.controller;
+package com.company.webapp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
