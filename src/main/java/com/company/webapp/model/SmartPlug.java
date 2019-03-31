@@ -6,11 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+// TODO: lombok not working?
+// @Data is a Lombok annotation to create all the getters, setters, equals, hash, and toString
+// methods, based on the fields.
+@Data
 @Entity
 @Table(name = "SMART_PLUGS")
 public class SmartPlug {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String name;

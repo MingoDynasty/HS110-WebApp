@@ -1,6 +1,7 @@
 package com.company.webapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +21,12 @@ public class SmartPlugService {
     return this.smartPlugRepository.findAll();
   }
 
-  public void insertSmartPlug(SmartPlug sp) {
-    // TODO
+  public Optional<SmartPlug> findOne(long id) {
+    return this.smartPlugRepository.findById(id);
+  }
+
+  public SmartPlug insertSmartPlug(SmartPlug sp) {
+    return this.smartPlugRepository.save(sp);
   }
 
   public void updateSmartPlug(SmartPlug sp) {
