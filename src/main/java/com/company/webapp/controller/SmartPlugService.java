@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.webapp.exception.SmartPlugNotFoundException;
 import com.company.webapp.model.SmartPlug;
 import com.company.webapp.repository.SmartPlugRepository;
 
@@ -38,13 +39,7 @@ public class SmartPlugService {
               smartPlug.setIpAddress(sp.getIpAddress());
               return this.smartPlugRepository.save(smartPlug);
             })
-        .orElseGet(
-            () -> {
-              // TODO: do we actually want to automatically insert a new? Or just return error?
-              logger.info("Failed to find smart plug with ID '{}'. Inserting a new...", id);
-              sp.setId(id);
-              return this.smartPlugRepository.save(sp);
-            });
+        .orElseThrow(() -> new SmartPlugNotFoundException(id));
   }
 
   public void deleteSmartPlug(long id) {
