@@ -1,4 +1,4 @@
-package com.company.webapp.controller;
+package com.company.webapp.service;
 
 import java.util.List;
 import java.util.Optional;
