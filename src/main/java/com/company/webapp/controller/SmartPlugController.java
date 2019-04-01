@@ -19,7 +19,7 @@ import com.company.webapp.model.SmartPlug;
 import com.company.webapp.service.SmartPlugService;
 
 @RestController
-@RequestMapping("v1")
+@RequestMapping("/api/v1")
 public class SmartPlugController {
   private static final Logger logger = LoggerFactory.getLogger(SmartPlugController.class);
 
